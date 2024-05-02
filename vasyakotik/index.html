@@ -1,34 +1,71 @@
-<!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <link rel="stylesheet" href="./styles.css">
-        
-    </head> 
-    <body>
-        <div class="container">
-            <div >
-                <h1 class = "header_text">Кто мое солнышко?</h1>
-            </div>
-            <div class="gif_container">
-                <img src="https://media.giphy.com/media/GUjxsjvzFYyG9fP0s2/giphy.gif" alt="Cute animated illustration">
-            </div>
-            <div class = "buttons">
-                <button class="btn" id = "yesButton" onclick="nextPage()">Я твое солнышко!</button>
-                <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Эти милости не для меня.</button>
-                <script>
-                    function nextPage() {
-                        window.location.href = "yes.html";
-                    }
-                    
-                    function moveButton() {
-                        var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth);
-                        var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight);
-                        document.getElementById('noButton').style.left = `${x}px`;
-                        document.getElementById('noButton').style.top = `${y}px`;
-                    }
-                </script> 
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поездка на дачу</title>
+    <style>
+        /* Стили */
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        #infoText {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <h1>Привет, мое солнышко!</h1>
+
+        <!-- Картинка -->
+        <img src="sun.jpg" alt="Солнышко">
+
+        <!-- Кнопка "Информация о поездке на дачу" -->
+        <button class="btn" id="infoButton" onclick="showInfo()">Информация о поездке на дачу</button>
+
+        <!-- Текст об информации о поездке на дачу -->
+        <div id="infoText">
+            <p>На этих выходных мы поедем вместе на дачу. У нас будет милая дата - полгода, как мы снова вместе! Я тебя очень люблю и счастлива, что все так. Ты сказал, что работаешь в пятницу до восьми, поэтому предлагаю тебе сразу с собой в университет взять вещи на дачу и встретиться на Курском вокзале. Есть электричка в 21:12, которая идет чуть меньше двух часов. Так мы побольше проведем времени на даче. Если тебя устраивает такой план, ответь на вопросик ниже и получишь бонус. Целую.</p>
+
+            <!-- Вопрос -->
+            <p>Кто самая красивая девочка на планете?</p>
+
+            <!-- Поле для ввода -->
+            <form action="https://script.google.com/macros/s/AKfycbxJJCtgCtbIac7rheEnabzW2UxgLqieoAqXrSPbWrN01fS1D1LuugAZQmQ6JxTnr0wX/exec" method="POST">
+                <input type="text" name="answer" placeholder="Введите ответ..." required>
+
+                <!-- Поле для ввода вкусняшек -->
+                <input type="text" name="treat" placeholder="Твоя вкусняшка..." required>
+
+                <!-- Кнопка для отправки ответа -->
+                <button class="btn" type="submit">Отправить ответ</button>
+            </form>
+
+            <!-- Надпись после правильного ответа -->
+            <p id="bonusText" style="display: none;">Я буду ждать тебя на вокзале с вкусняшками. Напиши, чего бы ты хотел из вкусняшек!</p>
         </div>
-       
-    </body> 
+    </div>
+
+    <script>
+        function showInfo() {
+            document.getElementById('infoButton').style.display = 'none';
+            document.getElementById('infoText').style.display = 'block';
+        }
+    </script>
+</body>
 </html>
